@@ -11,3 +11,4 @@ jobs:
       - run: node test.js
         env: 
           GH_TOKEN: ${{ github.token }}
+          REPOSITORY_ID: ${{ github.repository_id }}
