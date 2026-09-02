@@ -3,11 +3,11 @@ const fs = require('fs');
 const uploadAPI = "https://uploads.github.com/user-attachments/assets"
 
 const url = new URL(uploadAPI)
-url.searchParams.append("name", "test.pnd")
+url.searchParams.append("name", "test.png")
 url.searchParams.append("content_type", "image/png")
 url.searchParams.append("repository_id", process.env.REPOSITORY_ID)
 
-const fileStream = fs.createReadStream("test.pnd") // Replace with the actual file path
+const fileStream = fs.createReadStream("test.png") // Replace with the actual file path
 
 fetch(url, {
   method: "POST",
