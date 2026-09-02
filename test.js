@@ -16,7 +16,7 @@ fetch(url, {
     "Authorization": `token ${process.env.GH_TOKEN}`, // Replace with your GitHub token
     "Accept": "application/vnd.github+json"
   },
-  body: fileStream // Assuming fileStream is a readable stream of the file to upload
+  body: fileStream, // Assuming fileStream is a readable stream of the file to upload
   duplex: 'half' // Required for streaming uploads
 })
 .then(response => {
