@@ -17,6 +17,7 @@ fetch(url, {
     "Accept": "application/vnd.github+json"
   },
   body: fileStream // Assuming fileStream is a readable stream of the file to upload
+  duplex: 'half' // Required for streaming uploads
 })
 .then(response => {
   if (!response.ok) {
