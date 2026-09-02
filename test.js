@@ -7,7 +7,8 @@ url.searchParams.append("name", "test.png")
 url.searchParams.append("content_type", "image/png")
 url.searchParams.append("repository_id", process.env.REPOSITORY_ID)
 
-const fileStream = fs.createReadStream("test.png") // Replace with the actual file path
+const fileBuffer = fs.readFileSync('test.png');
+const fileBlob = new Blob([fileBuffer], { type: 'image/png' });
 
 fetch(url, {
   method: "POST",
@@ -16,8 +17,7 @@ fetch(url, {
     "Authorization": `token ${process.env.GH_TOKEN}`, // Replace with your GitHub token
     "Accept": "application/vnd.github+json"
   },
-  body: fileStream, // Assuming fileStream is a readable stream of the file to upload
-  duplex: 'half' // Required for streaming uploads
+  body: fileBlob, // Assuming fileStream is a readable stream of the file to upload
 })
 .then(async (response) => {
   if (!response.ok) {
