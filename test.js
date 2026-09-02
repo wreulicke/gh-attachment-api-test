@@ -3,8 +3,8 @@ const fs = require('fs');
 const uploadAPI = "https://uploads.github.com/user-attachments/assets"
 
 const url = new URL(uploadAPI)
-url.searchParams.append("name", "test.png")
 url.searchParams.append("content_type", "image/png")
+url.searchParams.append("name", "test.png")
 url.searchParams.append("repository_id", process.env.REPOSITORY_ID)
 console.log("Upload URL:", url.toString());
 
