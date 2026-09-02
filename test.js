@@ -6,6 +6,7 @@ const url = new URL(uploadAPI)
 url.searchParams.append("name", "test.png")
 url.searchParams.append("content_type", "image/png")
 url.searchParams.append("repository_id", process.env.REPOSITORY_ID)
+console.log("Upload URL:", url.toString());
 
 const fileBuffer = fs.readFileSync('test.png');
 const fileBlob = new Blob([fileBuffer], { type: 'image/png' });
