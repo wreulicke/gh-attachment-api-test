@@ -19,9 +19,10 @@ fetch(url, {
   body: fileStream, // Assuming fileStream is a readable stream of the file to upload
   duplex: 'half' // Required for streaming uploads
 })
-.then(response => {
+.then(async (response) => {
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    const errorText = await response.text();
+    throw new Error(`HTTP error! status: ${response.status} ${errorText}`);
   }
   return response.json();
 })
